@@ -51,9 +51,12 @@ const initialDb = [
 const CrudApp = () => {
   const [db, setDb] = useState(initialDb);
   const [dataToEdit, setDataToEdit] = useState(null);
+  const [confirmationMessage, setConfirmationMessage] = useState("");
 
   const createData = (data) => {
     setDb([...db, data]);
+    let isCreated = `Se creó un nuevo registro con el nombre ${data.name}`;
+    window.confirm(isCreated);
   };
 
   const updateData = (updatedData) => {
@@ -82,17 +85,21 @@ const CrudApp = () => {
   return (
     <div>
       <h2>CRUD APP</h2>
-      <CrudForm
-        createData={createData}
-        updateData={updateData}
-        dataToEdit={dataToEdit}
-        setDataToEdit={setDataToEdit}
-      />
-      <CrudTable
-        data={db}
-        setDataToEdit={setDataToEdit}
-        deleteData={deleteData}
-      />
+      <div className="grid-1-2">
+        <CrudForm
+          createData={createData}
+          updateData={updateData}
+          dataToEdit={dataToEdit}
+          setDataToEdit={setDataToEdit}
+        />
+        <div>
+          <CrudTable
+            data={db}
+            setDataToEdit={setDataToEdit}
+            deleteData={deleteData}
+          />
+        </div>
+      </div>
     </div>
   );
 };

@@ -38,6 +38,21 @@ tr:hover {
   background-color: #e0e0e0;
 }
 
+@media screen and (min-width: 1024px) {
+  .grid-1-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+  }
+
+  .grid-1-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+  }
+}
 
 
 /* Estilos para campos de entrada y textarea */
