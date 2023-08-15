@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import CrudTableRow from "./CrudTableRow";
 
-function CrudTable({ data }) {
-  // Se debe desestructurar 'data' desde las props
+function CrudTable({ data, setDataToEdit, deleteData }) {
   return (
     <div>
       <h3> Tabla de datos</h3>
@@ -20,7 +21,14 @@ function CrudTable({ data }) {
               <td colSpan="3">Sin Datos </td>
             </tr>
           ) : (
-            data.map((el) => <CrudTableRow key={el.id} rowData={el} />)
+            data.map((el) => (
+              <CrudTableRow
+                key={el.id}
+                rowData={el}
+                setDataToEdit={setDataToEdit}
+                deleteData={deleteData}
+              />
+            ))
           )}
         </tbody>
       </table>

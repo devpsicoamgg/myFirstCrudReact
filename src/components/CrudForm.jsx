@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 
 const initialForm = {
   name: "",
@@ -6,18 +8,46 @@ const initialForm = {
   id: null,
 };
 
-const CrudForm = () => {
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initialForm);
 
-  const handleChange = (e) => {};
-  const handleSubmit = (e) => {};
-  const handleReset = (e) => {
-    setForm(initialForm);
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!form.name || !form.diagnostico) {
+      alert("Datos Incompletos");
+      return;
+    }
+    if (form.id === null) {
+      createData({ ...form, id: new Date().getTime() });
+    } else {
+      updateData(form);
+    }
+    handleReset();
+  };
+
+  const handleReset = () => {
+    setForm(initialForm);
+    setDataToEdit(null);
+  };
+
+  useEffect(() => {
+    if (dataToEdit) {
+      setForm(dataToEdit);
+    } else {
+      setForm(initialForm);
+    }
+  }, [dataToEdit]);
 
   return (
     <div>
-      <h3> AGREGAR </h3>
+      <h3>AGREGAR</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

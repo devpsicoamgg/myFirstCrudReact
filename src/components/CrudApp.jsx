@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
@@ -46,18 +47,41 @@ const initialDb = [
     diagnostico: "F44-Trastornos disociativos",
   },
 ];
+
 const CrudApp = () => {
   const [db, setDb] = useState(initialDb);
-
   const [dataToEdit, setDataToEdit] = useState(null);
 
-  const createData = (data) => {};
-  const updateData = (data) => {};
-  const deleteData = (id) => {};
+  const createData = (data) => {
+    setDb([...db, data]);
+  };
+
+  const updateData = (updatedData) => {
+    const updatedDb = db.map((item) =>
+      item.id === updatedData.id ? updatedData : item
+    );
+    setDb(updatedDb);
+  };
+
+  const deleteData = (id) => {
+    let isDeleteData = window.confirm(
+      `¿Estas seguro de eliminar el ID No ${id}?`
+    );
+
+    if (isDeleteData) {
+      let newData = db.filter((el) => el.id !== id);
+      setDb(newData);
+    } else {
+      return;
+    }
+
+    const updatedDb = db.filter((item) => item.id !== id);
+    setDb(updatedDb);
+  };
 
   return (
     <div>
-      <h2> CRUD APP </h2>
+      <h2>CRUD APP</h2>
       <CrudForm
         createData={createData}
         updateData={updateData}

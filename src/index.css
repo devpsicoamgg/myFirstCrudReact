@@ -1,0 +1,94 @@
+/* Reset de estilos y fuentes base */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+/* Estilos para campos de entrada y textarea */
+input[type="text"],
+textarea {
+  border: 1px solid #dedede;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  outline: none;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:hover,
+textarea:hover {
+  border-color: #aaa;
+}
+
+/* Estilos para botones y elementos de entrada */
+button,
+input[type="submit"],
+input[type="reset"] {
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem 0 0;
+  display: inline-block;
+  background-color: #eee;
+  color: #444;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1;
+  text-transform: none;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #ddd;
+  color: #222;
+  transform: translateY(-2px);
+}
+
+/* Estilos para el formulario */
+form {
+  margin-bottom: 1rem;
+}
+
+/* Efectos de tabla */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
